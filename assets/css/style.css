@@ -1,0 +1,230 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@700&display=swap');
+
+:root.theme-1 {
+  --main-bg: hsl(222, 26%, 31%);
+  --toggle-bg: hsl(223, 31%, 20%);
+  --screen-bg: hsl(224, 36%, 15%);
+  --del-bg: hsl(225, 21%, 49%);
+  --del-shadow: hsl(224, 28%, 35%);
+  --equal-bg: hsl(6, 63%, 50%);
+  --equal-shadow: hsl(6, 70%, 34%);
+  --regular-key-bg: hsl(30, 25%, 89%);
+  --regular-key-shadow: hsl(28, 16%, 65%);
+  --text-main: hsl(221, 14%, 31%);
+  --text-secondary: #fff;
+  --white: #fff;
+  --equal-color: #fff;
+}
+
+:root.theme-2 {
+  --main-bg: hsl(0, 0%, 90%);
+  --toggle-bg: hsl(0, 5%, 81%);
+  --screen-bg: hsl(0, 0%, 93%);
+  --del-bg: hsl(185, 42%, 37%);
+  --del-shadow: hsl(185, 58%, 25%);
+  --equal-bg: hsl(25, 98%, 40%);
+  --equal-shadow: hsl(25, 99%, 27%);
+  --regular-key-bg: hsl(45, 7%, 89%);
+  --regular-key-shadow: hsl(35, 11%, 61%);
+  --text-main: hsl(60, 10%, 19%);
+  --text-secondary: #2b2b2b;
+  --white: #fff;
+  --equal-color: #fff;
+}
+
+:root.theme-3 {
+  --main-bg: hsl(268, 75%, 9%);
+  --toggle-bg: hsl(268, 71%, 12%);
+  --screen-bg: hsl(268, 71%, 12%);
+  --del-bg: hsl(281, 89%, 26%);
+  --del-shadow: hsl(285, 91%, 52%);
+  --equal-bg: hsl(176, 100%, 44%);
+  --equal-shadow: hsl(177, 92%, 70%);
+  --regular-key-bg: hsl(268, 47%, 21%);
+  --regular-key-shadow: hsl(290, 70%, 36%);
+  --text-main: hsl(52, 100%, 62%);
+  --text-secondary: hsl(52, 100%, 62%);
+  --white: #fff;
+  --equal-color: #2b2b2b;
+}
+
+@media (prefers-color-scheme: light) {
+
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  transition: color, background-color 300ms ease-in-out;
+}
+
+body {
+  background-color: var(--main-bg);
+  font-family: 'League Spartan', sans-serif;
+}
+
+button {
+  border: none;
+  outline: none;
+  font-family: 'League Spartan', sans-serif;
+  font-weight: 700;
+  color: var(--text-main);
+  background-color: var(--regular-key-bg);
+  font-size: 40px;
+  line-height: 1;
+  border-radius: 9px;
+  box-shadow: 0 3px 0 var(--regular-key-shadow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 50ms ease-in-out;
+}
+
+button:active {
+  transform: translateY(2px);
+}
+
+section {
+  min-height: 100vh;
+  display: grid;
+  place-content: center;
+}
+
+.container {
+  width: 540px;
+  margin-inline: auto;
+}
+
+.title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--text-secondary);
+  margin-bottom: 30px;
+}
+
+.title p {
+  font-size: 33px ;
+}
+
+.toggles-section {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.toggles-section span {
+  font-size: 12px; 
+  text-transform: uppercase;
+  letter-spacing: 2px;
+} 
+
+.toggles {
+  background-color: var(--toggle-bg);
+  display: flex;
+  gap: 2px;
+  border-radius: 30px;
+  padding: 3px 4px;
+}
+
+input[type="radio"] {
+  appearance: none;
+  position: relative;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  outline: none;
+}
+
+button, input[type="radio"]:hover {
+  cursor: pointer;
+}
+
+input[type="radio"]:checked::before {
+  content: "";
+  display: block;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: var(--equal-bg);
+}
+
+input[type="radio"]::after {
+  content: "1";
+  font-family: 'League Spartan', sans-serif;
+  color: var(--text-secondary);
+  font-size: 10px;
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+input[type="radio"]:nth-child(2)::after {
+  content: "2";
+}
+input[type="radio"]:nth-child(3)::after {
+  content: "3";
+}
+
+.screen {
+  color: var(--text-secondary);
+  background-color: var(--screen-bg);
+  border-radius: 8px;
+  padding: 30px;
+  text-align: right;
+  font-size: 52px;
+  margin-bottom: 25px;
+}
+
+.buttons-container {
+  background-color: var(--toggle-bg);
+  padding: 30px;
+  border-radius: 8px;
+}
+
+.buttons {
+  display: grid;
+  gap: 25px;
+  grid-template-columns: repeat(4, 101px);
+  grid-template-rows: repeat(5, 60px);
+}
+
+#reset {
+  grid-column: span 2;
+}
+
+#equal {
+  grid-column: span 2;
+}
+
+#delete, #reset {
+  background-color: var(--del-bg);
+  box-shadow: 0 3px 0 var(--del-shadow);
+  color: var(--white);
+  font-size: 30px;
+}
+
+#equal {
+  background-color: var(--equal-bg);
+  color: var(--equal-color);
+  box-shadow: 0 3px 0 var(--equal-shadow);
+}
+
+@media screen and (max-width: 450px) {
+  .container {
+    width: 100%;
+  }
+
+  .buttons {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(4, 60px);
+    grid-template-rows: repeat(5, 60px);
+  }
+
+  #delete, #reset, #equal {
+    font-size: 21px;
+  }
+}
