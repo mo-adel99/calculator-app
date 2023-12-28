@@ -1,11 +1,13 @@
 'use strict'
 
+const allButtons = document.querySelectorAll('button');
 const themeSelector = document.querySelectorAll('input');
 const screen = document.querySelector(".screen");
 const screenButtons = document.querySelectorAll(".on-screen");
 const deleteBtn = document.querySelector("#delete");
 const equalBtn = document.querySelector("#equal");
 const resetBtn = document.querySelector("#reset");
+const sound = document.querySelector("#sound");
 let screenValue = '';
 
 themeSelector.forEach((selector) => {
@@ -67,4 +69,10 @@ resetBtn.addEventListener("click", () => {
 deleteBtn.addEventListener("click", () => {
   screen.textContent = screen.textContent.slice(0, -1);
   screenValue = screen.textContent;
+})
+
+allButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    sound.play();
+  })
 })
